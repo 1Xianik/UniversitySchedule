@@ -1,0 +1,26 @@
+﻿<Window x:Class="UniversitySchedule.WPF.WorkloadReportWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Занятость преподавателей" Height="500" Width="600"
+        WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Занятость преподавателей" FontSize="18" FontWeight="Bold" Margin="0,0,0,15"/>
+
+        <DataGrid Grid.Row="1" x:Name="dgWorkload" AutoGenerateColumns="False" IsReadOnly="True"
+                  CanUserAddRows="False" FontSize="13" RowHeight="28" AlternatingRowBackground="#F5F5F5">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Преподаватель" Binding="{Binding TeacherName}" Width="*"/>
+                <DataGridTextColumn Header="Количество пар в неделю" Binding="{Binding PairCount}" Width="220"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button Grid.Row="2" Content="Закрыть" Width="130" Padding="8" 
+                HorizontalAlignment="Center" Margin="0,15,0,0" Click="BtnClose_Click"/>
+    </Grid>
+</Window>

@@ -1,0 +1,50 @@
+﻿<Window x:Class="UniversitySchedule.WPF.UsersWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Управление пользователями" Height="600" Width="1000"
+        WindowStartupLocation="CenterOwner"
+        Background="{StaticResource LightBgBrush}">
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text=" Управление пользователями" 
+                   Style="{StaticResource HeaderText}" Margin="0,0,0,15"/>
+
+        <!-- Кнопки действий -->
+        <Border Grid.Row="1" Background="White" CornerRadius="8" Padding="15" Margin="0,0,0,10">
+            <StackPanel Orientation="Horizontal">
+                <Button Content="➕ Добавить" Style="{StaticResource PrimaryButton}"
+                        Margin="0,0,10,0" Click="BtnAdd_Click"/>
+                <Button Content="✏️ Редактировать" Style="{StaticResource PrimaryButton}"
+                        Margin="0,0,10,0" Click="BtnEdit_Click"
+                        Background="#D99A4A"/>
+                <Button Content="🗑️ Удалить" Style="{StaticResource PrimaryButton}"
+                        Click="BtnDelete_Click" Background="#C0392B"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Таблица пользователей -->
+        <GroupBox Grid.Row="2" Header="Пользователи системы" 
+                  Style="{StaticResource StyledGroupBox}">
+            <DataGrid x:Name="dgUsers" Style="{StaticResource StyledDataGrid}"
+                      SelectionMode="Single" MouseDoubleClick="DgUsers_MouseDoubleClick">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding TeacherID}" Width="50"/>
+                    <DataGridTextColumn Header="ФИО" Binding="{Binding FullName}" Width="*"/>
+                    <DataGridTextColumn Header="Кафедра" Binding="{Binding Department}" Width="150"/>
+                    <DataGridTextColumn Header="Должность" Binding="{Binding Position}" Width="150"/>
+                    <DataGridTextColumn Header="Логин" Binding="{Binding Login}" Width="120"/>
+                    <DataGridTextColumn Header="Роль" Binding="{Binding RoleDisplay}" Width="130"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </GroupBox>
+
+        <TextBlock Grid.Row="3" x:Name="txtStatus" Margin="5,10,0,0" 
+                   Foreground="#555555" FontStyle="Italic"/>
+    </Grid>
+</Window>

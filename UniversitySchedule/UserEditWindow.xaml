@@ -1,0 +1,77 @@
+﻿<Window x:Class="UniversitySchedule.WPF.UserEditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Пользователь" Height="604" Width="500"
+        WindowStartupLocation="CenterOwner" ResizeMode="NoResize"
+        Background="{StaticResource LightBgBrush}">
+    <Grid Margin="25">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- 0: Заголовок -->
+            <RowDefinition Height="Auto"/>
+            <!-- 1: ФИО label -->
+            <RowDefinition Height="Auto"/>
+            <!-- 2: ФИО TextBox -->
+            <RowDefinition Height="Auto"/>
+            <!-- 3: Кафедра label -->
+            <RowDefinition Height="Auto"/>
+            <!-- 4: Кафедра TextBox -->
+            <RowDefinition Height="Auto"/>
+            <!-- 5: Должность label -->
+            <RowDefinition Height="Auto"/>
+            <!-- 6: Должность TextBox -->
+            <RowDefinition Height="Auto"/>
+            <!-- 7: Логин label -->
+            <RowDefinition Height="Auto"/>
+            <!-- 8: Логин TextBox -->
+            <RowDefinition Height="Auto"/>
+            <!-- 9: Пароль label -->
+            <RowDefinition Height="Auto"/>
+            <!-- 10: Пароль PasswordBox -->
+            <RowDefinition Height="Auto"/>
+            <!-- 11: Роль label -->
+            <RowDefinition Height="Auto"/>
+            <!-- 12: Роль ComboBox -->
+            <RowDefinition Height="Auto"/>
+            <!-- 13: Кнопки -->
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" x:Name="txtHeader" Text="Новый пользователь" 
+                   Style="{StaticResource HeaderText}" Margin="0,0,0,20"/>
+
+        <TextBlock Grid.Row="1" Text="ФИО:" FontWeight="SemiBold" Margin="0,0,0,5"/>
+        <TextBox Grid.Row="2" x:Name="txtFullName" 
+                 Style="{StaticResource RoundedTextBox}" Margin="0,0,0,10"/>
+
+        <TextBlock Grid.Row="3" Text="Кафедра:" FontWeight="SemiBold" Margin="0,0,0,5"/>
+        <TextBox Grid.Row="4" x:Name="txtDepartment" 
+                 Style="{StaticResource RoundedTextBox}" Margin="0,0,0,10"/>
+
+        <TextBlock Grid.Row="5" Text="Должность:" FontWeight="SemiBold" Margin="0,0,0,5"/>
+        <TextBox Grid.Row="6" x:Name="txtPosition" 
+                 Style="{StaticResource RoundedTextBox}" Margin="0,0,0,10"/>
+
+        <TextBlock Grid.Row="7" Text="Логин:" FontWeight="SemiBold" Margin="0,0,0,5"/>
+        <TextBox Grid.Row="8" x:Name="txtLogin" 
+                 Style="{StaticResource RoundedTextBox}" Margin="0,0,0,10"/>
+
+        <TextBlock Grid.Row="9" Text="Пароль:" FontWeight="SemiBold" Margin="0,0,0,5"/>
+        <PasswordBox Grid.Row="10" x:Name="txtPassword" 
+                     Style="{StaticResource RoundedPasswordBox}" Margin="0,0,0,10"/>
+
+        <TextBlock Grid.Row="11" Text="Роль:" FontWeight="SemiBold" Margin="0,0,0,5"/>
+        <ComboBox Grid.Row="12" x:Name="cmbRole" 
+                  Style="{StaticResource RoundedComboBox}" Margin="0,0,0,20"
+                  SelectedValuePath="Tag">
+            <ComboBoxItem Content="Преподаватель" Tag="teacher" IsSelected="True"/>
+            <ComboBoxItem Content="Администратор" Tag="admin"/>
+        </ComboBox>
+
+        <StackPanel Grid.Row="13" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="Сохранить" Width="140" Style="{StaticResource PrimaryButton}"
+                    Margin="0,0,10,0" Click="BtnSave_Click"/>
+            <Button Content="Отмена" Width="140" Style="{StaticResource SecondaryButton}"
+                    Click="BtnCancel_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
